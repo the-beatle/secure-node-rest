@@ -1,19 +1,45 @@
 {
-  "name": "server",
+  "name": "start",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack -p",
+    "postinstall": "npm run build",
+    "pretest": "cowsay \"running tests don't panic\"",
+    "test": "jest --coverage",
+    "prestart": "npm run build",
+    "start": "node ./dist/main.js",
+    "dev:start": "clear; nodemon --exec babel-node ./src",
+    "dev:coverage": "open ./coverage/lcov-report/index.html",
+    "dev:test": "jest --watchAll"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "nodemon": "^2.0.20",
-    "socket.io": "^4.5.4",
-    "socket.io-client": "^4.5.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^24.7.1",
+    "babel-loader": "^8.0.5",
+    "cowsay": "^1.4.0",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "./src/jest-setup.js"
+    ]
   }
 }
