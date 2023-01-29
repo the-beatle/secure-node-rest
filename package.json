@@ -6,7 +6,6 @@
   "scripts": {
     "build": "webpack -p",
     "postinstall": "npm run build",
-    "pretest": "cowsay \"running tests don't panic\"",
     "test": "jest --coverage",
     "prestart": "npm run build",
     "start": "node ./dist/main.js",
@@ -29,7 +28,6 @@
     "@babel/preset-env": "^7.20.2",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
-    "cowsay": "^1.4.0",
     "jest": "^24.7.1",
     "nodemon": "^1.18.11",
     "supertest": "^4.0.2",
